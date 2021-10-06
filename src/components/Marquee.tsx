@@ -107,9 +107,15 @@ const Marquee: React.FC<MarqueeProps> = ({
 
   const calculateWidth = () => {
     // Find width of container and width of marquee
+    let newContainerWidth = containerWidth;
+    let newMarqueeWidth = marqueeWidth;
+
     if (marqueeRef.current && containerRef.current) {
-      setContainerWidth(containerRef.current.getBoundingClientRect().width);
-      setMarqueeWidth(marqueeRef.current.getBoundingClientRect().width);
+      newContainerWidth = containerRef.current.getBoundingClientRect().width;
+      newMarqueeWidth = marqueeRef.current.getBoundingClientRect().width;
+
+      setContainerWidth(newContainerWidth);
+      setMarqueeWidth(newMarqueeWidth);
     }
 
     if (marqueeWidth < containerWidth) {
